@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="티맵모빌리티 U.STRA HR 디자인 목업 — 가상 데이터, 서버 미연계">
+    <title>TMAP MOBILITY · U.STRA HR</title>
+    <!-- 스타일: 디자인 토큰 → 공통 컴포넌트 → 화면별 스타일 → 반응형 순서 -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- 일반 script + defer: 빌드나 로컬 서버 없이 file:// 실행 가능 -->
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">본문으로 이동</a>
+    <!-- 01. 공통 헤더: 고객 로고와 제품명, 유틸리티 -->
+    <header class="header">
+        <button class="icon-button mobile-menu" id="menu-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+        <a class="brand" href="#home" aria-label="TMAP MOBILITY U.STRA HR 홈">
+            <img src="assets/images/tmap-logo.png" alt="TMAP MOBILITY" width="220" height="54">
+            <span class="brand-divider"></span><span class="product-name">U.STRA HR</span>
+        </a>
+        <div class="utilities">
+            <span class="prototype-tag">디자인 목업 v0.3</span>
+            <button class="icon-button" data-action="global-search" aria-label="직원 검색" title="직원 검색"></button>
+            <button class="icon-button" data-action="notifications" aria-label="시연 안내" title="시연 안내"></button>
+            <span class="user-label"><span class="avatar">HR</span> 인사담당자</span>
+        </div>
+    </header>
+    <!-- 02. 공통 내비게이션: 메뉴 정의는 data.js의 MENUS 한 곳에서 관리 -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+    <aside class="sidebar" aria-label="주 메뉴"><nav id="navigation"></nav>
+        <div class="sidebar-footer"><span class="demo-dot"></span> 가상 데이터 시연 환경</div>
+    </aside>
+    <!-- 03. 페이지 슬롯: app.js의 renderRoute()에서 화면 렌더링 -->
+    <main id="main" class="main" tabindex="-1"></main>
+    <!-- 04. 공통 모달: focus 복귀·Escape 닫기는 app.js에서 처리 -->
+    <dialog id="dialog" aria-labelledby="dialog-title">
+        <div class="dialog-heading"><h2 id="dialog-title"></h2><button class="icon-button" id="close-dialog" aria-label="닫기">✕</button></div>
+        <div id="dialog-body"></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
